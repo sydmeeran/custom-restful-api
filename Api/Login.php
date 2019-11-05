@@ -1,6 +1,4 @@
 <?php
-
-    $result_message = "";
     $format = "SELECT * FROM users WHERE gmail = %s";
     $query = sprintf($format, $_POST['gmail']);
     $result = $mysqli->query($query);
