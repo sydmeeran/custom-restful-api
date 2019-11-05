@@ -1,31 +1,8 @@
 <?php
 
+// connect to DB and get request from CLIENT
 $request = $_SERVER['REQUEST_URI'];
-
-
-// preberi vse uporabnike
-if (strpos($request, '/users') !== false )
-    require __DIR__ . '/Api/Users.php';
-
-// registracija uporabnika
-else if (strpos($request, '/create_user') !== false )
-    require __DIR__ . '/Api/CreateUser.php';
-
-// prijava uporabnika
-else if (strpos($request, '/login_user') !== false )
-    require __DIR__ . '/Api/Login.php';
-
-// preberi vse račune
-else if (strpos($request, '/invoices') !== false )
-    require __DIR__ . '/Api/Invoices.php';
-
-// ustvari račun
-else if (strpos($request, '/create_invoice') !== false )
-    require __DIR__ . '/Api/CreateInvoice.php';
-
-// izbriši račun
-else if (strpos($request, '/delete_invoice') !== false )
-    require __DIR__ . '/Api/DeleteInvoice.php';
+require_once('db.php'); 
 
 //function for encypting and decypting token
 /***
@@ -52,4 +29,34 @@ function encrypt_decrypt($action, $string) {
     }
     return $output;
 }
+
+// preberi vse uporabnike
+if (strpos($request, '/users') !== false )
+    require __DIR__ . '/Api/Users.php';
+
+// registracija uporabnika
+else if (strpos($request, '/create_user') !== false )
+    require __DIR__ . '/Api/CreateUser.php';
+
+// preberi podatke uporabnika
+else if (strpos($request, '/get_user') !== false )
+    require __DIR__ . '/Api/GetUser.php';
+
+// prijava uporabnika
+else if (strpos($request, '/login_user') !== false )
+    require __DIR__ . '/Api/Login.php';
+
+// preberi vse račune
+else if (strpos($request, '/invoices') !== false )
+    require __DIR__ . '/Api/Invoices.php';
+
+// ustvari račun
+else if (strpos($request, '/create_invoice') !== false )
+    require __DIR__ . '/Api/CreateInvoice.php';
+
+// izbriši račun
+else if (strpos($request, '/delete_invoice') !== false )
+    require __DIR__ . '/Api/DeleteInvoice.php';
+
+
 ?>
